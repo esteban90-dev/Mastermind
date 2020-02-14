@@ -22,9 +22,3 @@ class GuessCell
 
 end
 
-a = GuessCell.new
-puts a.get_cell
-
-a.set_shape("\u25A0")
-a.set_color("red")
-puts a.get_cell
