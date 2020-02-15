@@ -1,9 +1,9 @@
 require 'colorize'
 
-class GuessCell
+class Peg
     attr_accessor :shape, :color
 
-    def initialize(shape="\u25A1", color=:default)
+    def initialize(shape="\u25CB", color=:default)
         @shape = shape
         @color = color
     end
@@ -14,7 +14,7 @@ class GuessCell
 
     def set_color(new_color)
         self.color = new_color.to_sym
-        self.shape = "\u25A0"   #need to use a solid unicode character to have a 'fill color'
+        self.shape = "\u25CF"   #need to use a solid unicode character to have a 'fill color'
     end 
 end
 
