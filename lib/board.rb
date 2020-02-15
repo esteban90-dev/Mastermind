@@ -25,9 +25,9 @@ class Board
         end
     end
 
-    def update_guesses(round, input)
-        input.each{ |k,v| guesses[round][v].set_color(k)}
-        input.each{ |k,v| guesses[round][v].set_shape("\u25A0")}
+    def place_guess_on_board(current_round, input)
+        input.each{ |k,v| guesses[current_round][v].set_color(k)}
+        input.each{ |k,v| guesses[current_round][v].set_shape("\u25A0")}
     end
 
 
@@ -48,7 +48,7 @@ b['red'] = 0
 b['yellow'] = 1
 b['cyan'] = 2
 b['blue'] = 3
-a.update_guesses(0,b)
+a.place_guess_on_board(0,b)
 a.display
 
 
