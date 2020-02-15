@@ -16,9 +16,8 @@ class Board
         i = 0
         while i < rounds
             puts "-------------------"
-            #display first two feedback cells
+            #split the feedback cells across 2 lines
             puts "\t\t" + feedbacks[0].slice(0,feedbacks[0].length/2).map{ |x| x.get_cell }.join
-            #display last two feedback cells
             puts "\t\t" + feedbacks[0].slice(feedbacks[0].length/2, feedbacks[0].length-1).map{ |x| x.get_cell }.join
             puts guesses[i].map{ |x| x.get_cell }.join(" ")
             i += 1
