@@ -1,15 +1,22 @@
 class CodeBreaker
-    attr_accessor :position, :color
+    attr_accessor :guess
 
     def initialize
-        @position = 0
-        @color = ''
+        @guess = {}
     end
 
     public 
 
-    def make_guess(position, color)
-        self.position = position
-        self.color = color.to_s
+    def make_guess(input)
+        self.guess = input
     end
 end
+
+a = CodeBreaker.new
+b = Hash.new
+b['red'] = 0
+b['blue'] = 1
+b['yellow'] = 2
+b['cyan'] = 3
+a.make_guess(b)
+puts a.guess
