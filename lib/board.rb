@@ -2,13 +2,14 @@ require './peg.rb'
 
 class Board
     attr_reader :guesses, :feedbacks, :rounds
-    attr_accessor :code 
+    attr_accessor :code, :current_round 
 
     def initialize(rounds=8)
         @guesses = empty_guess_array(rounds)
         @feedbacks = empty_fdbk_array(rounds)
         @code = []
         @rounds = rounds
+        @current_round = 0
     end
 
     public
@@ -29,8 +30,12 @@ class Board
         self.code = input
     end
 
-    def place_guess(input,current_round)
+    def place_guess(input)
         input.each_with_index{ |x,index| guesses[current_round][index].set_color(x) }
+    end
+
+    def increment_round
+        self.current_round += 1
     end
 
     private 
@@ -44,3 +49,9 @@ class Board
     end
 end
 
+a = Board.new
+b = ['red','red','yellow','cyan']
+a.increment_round
+a.increment_round
+a.place_guess(b)
+a.display
