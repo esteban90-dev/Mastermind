@@ -2,13 +2,12 @@ require './guess_cell.rb'
 require './feedback_cell.rb'
 
 class Board
-    attr_reader :guesses, :feedbacks, :rounds, :current_round
+    attr_reader :guesses, :feedbacks, :rounds
 
     def initialize(rounds=8)
         @guesses = empty_guess_array(rounds)
         @feedbacks = empty_fdbk_array(rounds)
         @rounds = rounds
-        @current_round = 0
     end
 
     public
@@ -25,8 +24,8 @@ class Board
         end
     end
 
-    def place_guess_on_board(input)
-        input.each{ |k,v| guesses[current_round][v].set_color(k)}
+    def place_guess_on_board(input,current_round)
+        input.each_with_index{ |x,index| guesses[current_round][index].set_color(x)}
     end
 
 
@@ -42,12 +41,8 @@ class Board
 end
 
 a = Board.new(8)
-b = {}
-b['yellow'] = 0 #hash won't work in this scenario
-b['yellow'] = 1
-b['cyan'] = 2
-b['blue'] = 3
-a.place_guess_on_board(b)
+b = ['red','blue','yellow','cyan']
+a.place_guess_on_board(b,7)
 a.display
 
 
