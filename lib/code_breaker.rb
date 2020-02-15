@@ -12,11 +12,3 @@ class CodeBreaker
     end
 end
 
-a = CodeBreaker.new
-b = Hash.new
-b['red'] = 0
-b['blue'] = 1
-b['yellow'] = 2
-b['cyan'] = 3
-a.make_guess(b)
-puts a.guess

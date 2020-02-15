@@ -14,11 +14,7 @@ class GuessCell
 
     def set_color(new_color)
         self.color = new_color.to_sym
+        self.shape = "\u25A0"   #need to use a solid unicode character to have a 'fill color'
     end 
-
-    def set_shape(new_shape)
-        self.shape = new_shape
-    end
-
 end
 
