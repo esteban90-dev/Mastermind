@@ -17,9 +17,4 @@ class CodeMaker
         colors = ['red','green','yellow','blue','magenta','cyan']
         colors[rand(0...colors.length)]
     end
-
 end
-
-a = CodeMaker.new
-a.create_code
-puts a.code
