@@ -2,7 +2,7 @@ class CodeBreaker
     attr_accessor :guess
 
     def initialize
-        @guess = {}
+        @guess = []
     end
 
     public 
