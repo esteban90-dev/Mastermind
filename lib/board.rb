@@ -43,8 +43,16 @@ class Board
         self.current_round += 1
     end
 
+    def game_over?
+        winner? || loser?
+    end
+
     def winner?
         check_guess.all?{ |x| x == 'red' }
+    end
+
+    def loser?
+        current_round == rounds - 1
     end
 
     private 
@@ -94,6 +102,7 @@ a.increment_round
 a.place_guess(['yellow','yellow','yellow','red'])
 a.place_feedback
 a.display
+puts a.game_over?
 
 
 
