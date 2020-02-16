@@ -8,7 +8,7 @@ class Peg
         @color = color
     end
 
-    def get_cell
+    def get_formatted_peg_shape
         self.shape.colorize(color)
     end
 
@@ -16,5 +16,9 @@ class Peg
         self.color = new_color.to_sym
         self.shape = "\u25CF"   #need to use a solid unicode character to have a 'fill color'
     end 
+
+    def get_color
+        self.color.to_s
+    end
 end
 
