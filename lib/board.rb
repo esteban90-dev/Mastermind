@@ -1,5 +1,3 @@
-require './peg.rb'
-
 class Board
     attr_reader :guesses, :feedbacks, :rounds
     attr_accessor :code, :current_round 
@@ -17,11 +15,11 @@ class Board
     def display
         i = 0
         while i < rounds
-            puts "-------------------"
+            puts "\t-------------------"
             #split the feedback cells across 2 lines
-            puts "\t\t" + feedbacks[i].slice(0,feedbacks[current_round].length/2).map{ |x| x.get_formatted_peg_shape }.join
-            puts "\t\t" + feedbacks[i].slice(feedbacks[current_round].length/2, feedbacks[current_round].length-1).map{ |x| x.get_formatted_peg_shape }.join
-            puts guesses[i].map{ |x| x.get_formatted_peg_shape }.join(" ")
+            puts "\t\t\t" + feedbacks[i].slice(0,feedbacks[current_round].length/2).map{ |x| x.get_formatted_peg_shape }.join
+            puts "\t\t\t" + feedbacks[i].slice(feedbacks[current_round].length/2, feedbacks[current_round].length-1).map{ |x| x.get_formatted_peg_shape }.join
+            puts "\t" + guesses[i].map{ |x| x.get_formatted_peg_shape }.join(" ")
             i += 1
         end
     end
@@ -91,18 +89,7 @@ class Board
     end
 end
 
-a = Board.new
-a.place_code(['blue','blue','blue','yellow'])
-a.place_guess(['yellow','yellow','red','yellow'])
-a.place_feedback
-a.increment_round
-a.place_guess(['yellow','yellow','yellow','yellow'])
-a.place_feedback
-a.increment_round
-a.place_guess(['blue','blue','blue','yellow'])
-a.place_feedback
-a.display
-puts a.game_over?
+
 
 
 

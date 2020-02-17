@@ -1,5 +1,3 @@
-require 'colorize'
-
 class Peg
     attr_accessor :shape, :color
 

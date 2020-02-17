@@ -1,20 +1,21 @@
 class Game
-    attr_reader :board
+    attr_reader :board, :possible_colors
 
     def initialize(board=0, code_breaker=0, code_maker=0)
         @board = board
         @code_breaker = code_breaker
         @code_maker = code_maker
+        @possible_colors = ['red','green','yellow','blue','magenta','cyan']
     end
 
     public
 
     def display_welcome
-        "\n\tWelcome to the game MASTERMIND!"
+        puts "\n\tWelcome to the game MASTERMIND!".colorize(:cyan)
     end
 
     def display_rules
-        "\n\tRules:
+        puts "\n\tRules:
         The codemaker chooses a pattern of four colored pegs.
         The codebreaker tries to guess the pattern, in both 
         order and color, within twelve rounds. Each guess is 
@@ -32,23 +33,17 @@ class Game
         i = 0
         input = []
         while i < 4
-            puts "\nRound #{self.board.current_round} begins."
-            puts "\nPick a color for position #{i+1}: red, green, yellow, blue, magenta, and cyan."
+            #puts "\nRound #{board.current_round} begins."
+            puts "\n\tPick a color for position #{i+1}: " + "red".colorize(:red) + ", " + "green".colorize(:green) + ", " + "yellow".colorize(:yellow) + ", " + "blue".colorize(:blue) + ", " + "magenta".colorize(:magenta) + ", and " + "cyan".colorize(:cyan) + "."
             input << gets.chomp.downcase
-            if ['red','green','yellow','blue','magenta','cyan'].none?(input[-1])
+            if possible_colors.none?(input[-1])
                 input.pop
-                puts "\nPlease enter valid input!"
+                puts "\n\tPlease enter valid input!".colorize(:red)
             else
-            i += 1
+                i += 1
             end
         end
         input
     end
-
-
 end
 
-a = Game.new
-puts a.display_welcome
-puts a.display_rules
-a.prompt_code_breaker
