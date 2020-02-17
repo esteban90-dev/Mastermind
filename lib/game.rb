@@ -1,5 +1,6 @@
 class Game
-    attr_reader :board, :possible_colors
+    attr_reader :board, :possible_colors 
+    attr_accessor :code_maker, :code_breaker
 
     def initialize(board=0, code_breaker=0, code_maker=0)
         @board = board
@@ -32,9 +33,9 @@ class Game
     def prompt_code_breaker
         i = 0
         input = []
+        puts "\nRound #{board.current_round + 1} begins."
         while i < 4
-            #puts "\nRound #{board.current_round} begins."
-            puts "\n\tPick a color for position #{i+1}: " + "red".colorize(:red) + ", " + "green".colorize(:green) + ", " + "yellow".colorize(:yellow) + ", " + "blue".colorize(:blue) + ", " + "magenta".colorize(:magenta) + ", and " + "cyan".colorize(:cyan) + "."
+            puts "\n\tPick a color for position #{i + 1}: #{available_colors}"
             input << gets.chomp.downcase
             if possible_colors.none?(input[-1])
                 input.pop
@@ -45,5 +46,28 @@ class Game
         end
         input
     end
+
+    def play
+        display_welcome
+        display_rules
+        code_maker.create_code
+        loop do 
+            input = prompt_code_breaker
+            code_breaker.make_guess(input)
+            board.place_code(code_maker.code)
+            board.place_guess(input)
+            board.place_feedback
+            board.display
+            board.increment_round
+            break if board.game_over?
+        end
+    end
+
+    private
+
+    def available_colors
+        possible_colors.map{ |x| x.colorize(x.to_sym)}.join("  ")
+    end
+
 end
 

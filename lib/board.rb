@@ -46,11 +46,11 @@ class Board
     end
 
     def winner?
-        check_guess.all?{ |x| x == 'red' }
+        check_guess == code
     end
 
     def loser?
-        current_round == rounds - 1
+        current_round == rounds
     end
 
     private 
@@ -74,11 +74,11 @@ class Board
         white_pegs = 0
         temp_code = []
         temp_guess = []
-        while i < self.code.length
-            if self.code[i] == guess[i]
+        while i < code.length
+            if code[i] == guess[i]
                 result << 'red'
             else
-                temp_code << self.code[i]
+                temp_code << code[i]
                 temp_guess << guess[i]
             end
             i += 1

@@ -5,9 +5,8 @@ require './lib/code_maker.rb'
 require './lib/code_breaker.rb'
 require './lib/peg.rb'
 
-b = Board.new
-a = Game.new
-a.display_welcome
-a.display_rules
-a.prompt_code_breaker
-b.display
+board_1 = Board.new
+code_maker_1 = CodeMaker.new
+code_breaker_1 = CodeBreaker.new
+game_1 = Game.new(board_1,code_breaker_1,code_maker_1)
+game_1.play
