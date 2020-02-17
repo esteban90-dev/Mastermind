@@ -99,7 +99,7 @@ a.increment_round
 a.place_guess(['yellow','yellow','yellow','yellow'])
 a.place_feedback
 a.increment_round
-a.place_guess(['yellow','yellow','yellow','red'])
+a.place_guess(['blue','blue','blue','yellow'])
 a.place_feedback
 a.display
 puts a.game_over?
