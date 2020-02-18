@@ -1,5 +1,4 @@
-require './code_maker.rb'
-class CodeMakerComputer < CodeMaker
+class CodeMakerComputer < CodeMakerHuman
     def initalize
     end
 
@@ -16,7 +15,3 @@ class CodeMakerComputer < CodeMaker
         colors[rand(0...colors.length)]
     end
 end
-
-a = CodeMakerComputer.new
-a.create_code
-puts a.code
