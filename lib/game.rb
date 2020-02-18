@@ -52,9 +52,9 @@ class Game
         display_rules
         code_maker.create_code
         loop do 
-            input = prompt_code_breaker
+            code_breaker.guess = prompt_code_breaker
             board.place_code(code_maker.code)
-            board.place_guess(input)
+            board.place_guess(code_breaker.guess)
             board.display
             break if board.game_over?
             board.increment_round
