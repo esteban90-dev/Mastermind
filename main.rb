@@ -23,6 +23,5 @@ loop do
 
     game_1 = Game.new(board_1,code_breaker_1,code_maker_1)
     game_1.play
-    #game_1.display_results
     break if !replay?
 end
