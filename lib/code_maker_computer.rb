@@ -1,8 +1,6 @@
-class CodeMaker
-    attr_accessor :code
-
-    def initialize
-        @code = []
+require './code_maker.rb'
+class CodeMakerComputer < CodeMaker
+    def initalize
     end
 
     public
@@ -18,3 +16,7 @@ class CodeMaker
         colors[rand(0...colors.length)]
     end
 end
+
+a = CodeMakerComputer.new
+a.create_code
+puts a.code
