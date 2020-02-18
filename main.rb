@@ -1,9 +1,12 @@
 require 'colorize'
 require './lib/game.rb'
 require './lib/board.rb'
-require './lib/code_maker.rb'
-require './lib/code_breaker.rb'
+require './lib/code_maker_human.rb'
+require './lib/code_maker_computer.rb'
+require './lib/code_breaker_human.rb'
+require './lib/code_breaker_computer.rb'
 require './lib/peg.rb'
+require './lib/extras.rb'
 
 def replay?
     input = 0
@@ -17,9 +20,9 @@ def replay?
 end
 
 loop do
-    board_1 = Board.new(1)
-    code_maker_1 = CodeMaker.new
-    code_breaker_1 = CodeBreaker.new
+    board_1 = Board.new(3)
+    code_maker_1 = CodeMakerComputer.new
+    code_breaker_1 = CodeBreakerHuman.new
 
     game_1 = Game.new(board_1,code_breaker_1,code_maker_1)
     game_1.play

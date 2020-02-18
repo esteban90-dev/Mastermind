@@ -11,7 +11,7 @@ class CodeMakerComputer < CodeMakerHuman
     private
 
     def get_random_color
-        colors = ['red','green','yellow','blue','magenta','cyan']
+        colors = Extras::AVAILABLE_COLORS
         colors[rand(0...colors.length)]
     end
 end

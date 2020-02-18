@@ -1,4 +1,4 @@
-class CodeBreaker
+class CodeBreakerHuman
     attr_accessor :guess
 
     def initialize
