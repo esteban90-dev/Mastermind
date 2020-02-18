@@ -4,12 +4,5 @@ class CodeBreaker
     def initialize
         @guess = []
     end
-
-    public 
-
-    #this function is not needed
-    def make_guess(input)
-        self.guess = input
-    end
 end
 
