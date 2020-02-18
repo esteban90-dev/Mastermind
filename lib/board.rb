@@ -30,11 +30,7 @@ class Board
 
     def place_guess(input)
         input.each_with_index{ |x,index| self.guesses[current_round][index].set_color(x) }
-    end
-
-    def place_feedback
-        input = check_guess
-        input.each_with_index{ |x,index| self.feedbacks[current_round][index].set_color(x) }
+        place_feedback
     end
 
     def increment_round
@@ -46,11 +42,11 @@ class Board
     end
 
     def winner?
-        check_guess == code
+        check_guess.select{ |x| x == 'red'}.length == 4
     end
 
     def loser?
-        current_round == rounds
+        current_round == rounds - 1
     end
 
     private 
@@ -61,6 +57,11 @@ class Board
 
     def empty_fdbk_array(rounds)
         Array.new(rounds){ Array.new(4) { Peg.new }}
+    end
+
+    def place_feedback
+        input = check_guess
+        input.each_with_index{ |x,index| self.feedbacks[current_round][index].set_color(x) }
     end
 
     def current_guess

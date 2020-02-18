@@ -53,21 +53,26 @@ class Game
         code_maker.create_code
         loop do 
             input = prompt_code_breaker
-            code_breaker.make_guess(input)
             board.place_code(code_maker.code)
             board.place_guess(input)
-            board.place_feedback
             board.display
-            board.increment_round
             break if board.game_over?
+            board.increment_round
+        end
+    end
+
+    def display_results
+        if board.winner?
+            puts "\n\n\tCongratulations, you guessed the secret code and won the game!\n\n\n"
+        else
+            puts "\n\n\tSorry, you lost the game!\n\n\n"
         end
     end
 
     private
 
     def available_colors
-        possible_colors.map{ |x| x.colorize(x.to_sym)}.join("  ")
+        possible_colors.map{ |x| x.colorize(x.to_sym) }.join("  ")
     end
-
 end
 
