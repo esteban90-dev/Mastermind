@@ -5,13 +5,6 @@ class CodeMakerComputer < CodeMakerHuman
     public
 
     def create_code
-        4.times { code << get_random_color }
-    end
-
-    private
-
-    def get_random_color
-        colors = Extras::AVAILABLE_COLORS
-        colors[rand(0...colors.length)]
+        4.times { code << Extras::get_random_color }
     end
 end

@@ -1,12 +1,14 @@
 require 'colorize'
-require './lib/game.rb'
-require './lib/board.rb'
-require './lib/code_maker_human.rb'
-require './lib/code_maker_computer.rb'
-require './lib/code_breaker_human.rb'
-require './lib/code_breaker_computer.rb'
-require './lib/peg.rb'
-require './lib/extras.rb'
+require_relative './lib/game.rb'
+require_relative './lib/board.rb'
+require_relative './lib/code_maker_human.rb'
+require_relative './lib/code_maker_computer.rb'
+require_relative './lib/code_breaker_human.rb'
+require_relative './lib/code_breaker_computer.rb'
+require_relative './lib/peg.rb'
+require_relative './lib/extras.rb'
+
+include Extras
 
 def replay?
     input = 0
