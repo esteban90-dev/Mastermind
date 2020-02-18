@@ -51,14 +51,8 @@ class Game
         display_welcome
         display_rules
         code_maker.create_code
-        loop do 
-            code_breaker.guess = prompt_code_breaker
-            board.place_code(code_maker.code)
-            board.place_guess(code_breaker.guess)
-            board.display
-            break if board.game_over?
-            board.increment_round
-        end
+        game_loop
+        display_results
     end
 
     def display_results
@@ -73,6 +67,17 @@ class Game
 
     def available_colors
         possible_colors.map{ |x| x.colorize(x.to_sym) }.join("  ")
+    end
+
+    def game_loop
+        loop do 
+            code_breaker.guess = prompt_code_breaker
+            board.place_code(code_maker.code)
+            board.place_guess(code_breaker.guess)
+            board.display
+            break if board.game_over?
+            board.increment_round
+        end
     end
 end
 
