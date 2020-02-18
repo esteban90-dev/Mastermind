@@ -11,6 +11,14 @@ class Game
 
     public
 
+    def play
+        initial_setup
+        game_loop
+        display_results
+    end
+
+    private
+
     def prompt_for_pegs
         i = 0
         input = []
@@ -27,14 +35,6 @@ class Game
         input
     end
 
-    def play
-        display_welcome
-        display_rules
-        code_maker.create_code
-        game_loop
-        display_results
-    end
-
     def display_results
         if board.winner?
             puts "\n\n\tCongratulations, you guessed the secret code and won the game!\n\n\n"
@@ -42,8 +42,6 @@ class Game
             puts "\n\n\tSorry, you lost the game!\n\n\n"
         end
     end
-
-    private
 
     def available_colors
         possible_colors.map{ |x| x.colorize(x.to_sym) }.join("  ")
@@ -70,6 +68,20 @@ class Game
         from the guess which is correct in both color and 
         position. A white feedback peg indicates the existence of 
         a correct color code peg placed in the wrong position. \n\n"
+    end
+
+    def initial_setup
+        display_welcome
+        display_rules
+        get_secret_code
+    end
+
+    def get_secret_code
+        if code_maker.class == CodeMakerComputer
+            code_maker.create_code
+        else
+            code_maker.code = prompt_for_pegs
+        end
     end
 
     def game_loop
