@@ -1,10 +1,8 @@
 require 'colorize'
 require_relative './lib/game.rb'
 require_relative './lib/board.rb'
-require_relative './lib/code_maker_human.rb'
-require_relative './lib/code_maker_computer.rb'
-require_relative './lib/code_breaker_human.rb'
-require_relative './lib/code_breaker_computer.rb'
+require_relative './lib/code_maker.rb'
+require_relative './lib/code_breaker.rb'
 require_relative './lib/peg.rb'
 require_relative './lib/extras.rb'
 
