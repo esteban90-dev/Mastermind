@@ -1,13 +1,14 @@
 class Board
     attr_reader :guesses, :feedbacks, :rounds
-    attr_accessor :code, :current_round 
+    attr_accessor :code, :current_round, :current_fdbk
 
     def initialize(rounds=8)
-        @guesses = empty_guess_array(rounds)
-        @feedbacks = empty_fdbk_array(rounds)
+        @guesses = create_empty_guess_array(rounds)
+        @feedbacks = create_empty_fdbk_array(rounds)
         @code = []
         @rounds = rounds
         @current_round = 0
+        @current_feedback = []
     end
 
     public
@@ -42,7 +43,7 @@ class Board
     end
 
     def winner?
-        check_guess.select{ |x| x == 'red'}.length == 4
+        get_feedback.select{ |x| x == 'red'}.length == 4
     end
 
     def loser?
@@ -51,25 +52,25 @@ class Board
 
     private 
 
-    def empty_guess_array(rounds)
+    def create_empty_guess_array(rounds)
         Array.new(rounds){ Array.new(4) { Peg.new }}
     end
 
-    def empty_fdbk_array(rounds)
+    def create_empty_fdbk_array(rounds)
         Array.new(rounds){ Array.new(4) { Peg.new }}
     end
 
     def place_feedback
-        input = check_guess
+        input = get_feedback
         input.each_with_index{ |x,index| self.feedbacks[current_round][index].set_color(x) }
     end
 
-    def current_guess
+    def get_current_guess
         self.guesses[current_round].map{ |x| x.get_color }
     end
 
-    def check_guess
-        guess = current_guess
+    def get_feedback
+        guess = get_current_guess
         i = 0
         result = []
         white_pegs = 0

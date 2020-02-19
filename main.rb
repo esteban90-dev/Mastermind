@@ -13,7 +13,7 @@ include Extras
 loop do
     board_1 = Board.new(3)
     code_maker_1 = CodeMakerHuman.new
-    code_breaker_1 = CodeBreakerHuman.new
+    code_breaker_1 = CodeBreakerComputer.new
 
     game_1 = Game.new(board_1,code_breaker_1,code_maker_1)
     game_1.play

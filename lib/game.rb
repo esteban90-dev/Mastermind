@@ -13,7 +13,7 @@ class Game
 
     def play
         initial_setup
-        game_loop
+        game_loop_computer_guesser
         display_results
     end
 
@@ -23,7 +23,7 @@ class Game
         i = 0
         input = []
         while i < 4
-            puts "\n\tPick a color for position #{i + 1}: #{available_colors}"
+            puts "\n\tPick a color for position #{i + 1}: #{get_available_colors_in_color}"
             input << gets.chomp.downcase
             if possible_colors.none?(input[-1])
                 input.pop
@@ -43,7 +43,7 @@ class Game
         end
     end
 
-    def available_colors
+    def get_available_colors_in_color
         possible_colors.map{ |x| x.colorize(x.to_sym) }.join("  ")
     end
 
@@ -84,7 +84,7 @@ class Game
         end
     end
 
-    def game_loop
+    def game_loop_computer_guesser
         loop do 
             display_round
             code_breaker.guess = prompt_for_pegs
