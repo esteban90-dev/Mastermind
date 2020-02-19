@@ -13,7 +13,11 @@ class Game
 
     def play
         initial_setup
-        game_loop_computer_guesser
+        if code_breaker.class == CodeBreakerHuman
+            game_loop_human_guesser
+        else
+            game_loop_computer_guesser
+        end
         display_results
     end
 
@@ -84,13 +88,25 @@ class Game
         end
     end
 
-    def game_loop_computer_guesser
+    def game_loop_human_guesser
         loop do 
             display_round
             code_breaker.guess = prompt_for_pegs
             board.place_code(code_maker.code)
             board.place_guess(code_breaker.guess)
             board.display
+            break if board.game_over?
+            board.increment_round
+        end
+    end
+
+    def game_loop_computer_guesser
+        loop do
+            code_breaker.make_a_guess
+            puts code_breaker.guess
+            board.place_code(code_maker.code)
+            board.place_guess(code_breaker.guess)
+            board.display if board.game_over?
             break if board.game_over?
             board.increment_round
         end

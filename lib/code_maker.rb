@@ -1,3 +1,11 @@
+class CodeMakerHuman
+    attr_accessor :code
+
+    def initialize
+        @code = []
+    end
+end
+
 class CodeMakerComputer < CodeMakerHuman
     def initalize
     end
