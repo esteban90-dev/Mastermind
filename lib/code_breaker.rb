@@ -7,7 +7,14 @@ class CodeBreakerHuman
 end
 
 class CodeBreakerComputer < CodeBreakerHuman
-    def make_a_guess
-        4.times { self.guess << Extras.get_random_color }
+    def make_initial_guess
+        self.guess = []
+        4.times { self.guess << Extras.get_random_color}
     end
+
+    def make_next_guess(input)
+        #
+    end
+
 end
+

@@ -13,6 +13,6 @@ class CodeMakerComputer < CodeMakerHuman
     public
 
     def create_code
-        4.times { code << Extras::get_random_color }
+        4.times { code << Extras.get_random_color }
     end
 end

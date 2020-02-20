@@ -35,6 +35,7 @@ class Board
     end
 
     def increment_round
+        puts "round #{current_round}"
         self.current_round += 1
     end
 

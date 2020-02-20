@@ -41,9 +41,9 @@ class Game
 
     def display_results
         if board.winner?
-            puts "\n\n\tCongratulations, you guessed the secret code and won the game!\n\n\n"
+            puts Extras.display_winner_message
         else
-            puts "\n\n\tSorry, you lost the game!\n\n\n"
+            puts Extras.display_loser_message
         end
     end
 
@@ -55,28 +55,9 @@ class Game
         puts "\nRound #{board.current_round + 1} begins."
     end
 
-    def display_welcome
-        puts "\n\tWelcome to the game MASTERMIND!".colorize(:cyan)
-    end
-
-    def display_rules
-        puts "\n\tRules:
-        The codemaker chooses a pattern of four colored pegs.
-        The codebreaker tries to guess the pattern, in both 
-        order and color, within twelve rounds. Each guess is 
-        made by placing a row of colored pegs on the decoding 
-        board, picking one color peg at a time. Once placed, 
-        the computer provides feedback by placing from zero 
-        to four feedback pegs in the small holes of the row with 
-        the guess. A red feedback peg is placed for each code peg 
-        from the guess which is correct in both color and 
-        position. A white feedback peg indicates the existence of 
-        a correct color code peg placed in the wrong position. \n\n"
-    end
-
     def initial_setup
-        display_welcome
-        display_rules
+        Extras.display_welcome
+        Extras.display_rules
         get_secret_code
     end
 
@@ -85,6 +66,7 @@ class Game
             code_maker.create_code
         else
             code_maker.code = prompt_for_pegs
+            puts "secret code is #{code_maker.code}"
         end
     end
 
@@ -102,11 +84,12 @@ class Game
 
     def game_loop_computer_guesser
         loop do
-            code_breaker.make_a_guess
-            puts code_breaker.guess
+            code_breaker.make_initial_guess
             board.place_code(code_maker.code)
+            puts "Computer is guessing..."
+            sleep 2
             board.place_guess(code_breaker.guess)
-            board.display if board.game_over?
+            board.display
             break if board.game_over?
             board.increment_round
         end
