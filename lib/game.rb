@@ -12,7 +12,9 @@ class Game
     public
 
     def play
-        initial_setup
+        Extras.display_welcome
+        Extras.display_rules
+        get_secret_code
         if code_breaker.class == CodeBreakerHuman
             game_loop_human_guesser
         else
@@ -53,12 +55,6 @@ class Game
 
     def display_round
         puts "\nRound #{board.current_round + 1} begins."
-    end
-
-    def initial_setup
-        Extras.display_welcome
-        Extras.display_rules
-        get_secret_code
     end
 
     def get_secret_code
