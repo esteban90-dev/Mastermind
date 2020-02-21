@@ -1,6 +1,6 @@
 class Board
     attr_reader :guesses, :feedbacks, :rounds
-    attr_accessor :code, :current_round
+    attr_accessor :code, :current_round, :red_fdbk, :wht_fdbk
 
     def initialize(rounds=8)
         @guesses = create_empty_guess_array(rounds)
@@ -8,6 +8,8 @@ class Board
         @code = []
         @rounds = rounds
         @current_round = 0
+        @red_fdbk = [false, false, false, false]
+        @wht_fdbk = [false, false, false, false]
     end
 
     public
@@ -72,20 +74,31 @@ class Board
         guess = get_current_guess
         i = 0
         result = []
-        white_pegs = 0
-        temp_code = []
         temp_guess = []
+        temp_code = []
         while i < code.length
             if code[i] == guess[i]
                 result << 'red'
+                red_fdbk[i] = true
+                temp_code << "ignore-1"
+                temp_guess << "ignore-2"
             else
+                red_fdbk[i] = false
                 temp_code << code[i]
                 temp_guess << guess[i]
             end
             i += 1
         end
-        white_pegs = temp_code.map{ |x| temp_guess.include?(x) }.count{ |x| x == true}
-        white_pegs.times{ result << 'white' }
+        i = 0
+        while i < temp_code.length
+            if temp_code.include?(temp_guess[i])
+                wht_fdbk[i] = true
+                result << 'white'
+            else
+                wht_fdbk[i] = false
+            end
+            i += 1
+        end
         result
     end
 end

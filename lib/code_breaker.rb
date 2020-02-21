@@ -1,5 +1,3 @@
-require_relative 'extras.rb'
-
 class CodeBreakerHuman
     attr_accessor :guess
     
@@ -9,6 +7,9 @@ class CodeBreakerHuman
 end
 
 class CodeBreakerComputer < CodeBreakerHuman
+
+    public 
+
     def make_initial_guess
         self.guess = []
         4.times { self.guess << Extras.get_random_color }
@@ -20,7 +21,7 @@ class CodeBreakerComputer < CodeBreakerHuman
         shift_vals = []
         temp = []
         result = []
-        
+
         #keep colors that earned a red peg
         while i < reds.length
             if reds[i]
@@ -66,14 +67,6 @@ class CodeBreakerComputer < CodeBreakerHuman
     end
 end
 
-
-a = CodeBreakerComputer.new
-a.guess = ['red','red','green','blue']
-reds = [false, true, false, false]
-whites = [false, false, true, true]
-
-
-a.make_next_guess(reds, whites)
 
 
 

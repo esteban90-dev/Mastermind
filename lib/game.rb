@@ -12,8 +12,6 @@ class Game
     public
 
     def play
-        Extras.display_welcome
-        Extras.display_rules
         get_secret_code
         if code_breaker.class == CodeBreakerHuman
             game_loop_human_guesser
@@ -43,9 +41,9 @@ class Game
 
     def display_results
         if board.winner?
-            puts Extras.display_winner_message
+            Extras.display_winner_message
         else
-            puts Extras.display_loser_message
+            Extras.display_loser_message
         end
     end
 
@@ -78,11 +76,15 @@ class Game
     end
 
     def game_loop_computer_guesser
+        board.place_code(code_maker.code)
         loop do
             display_round
-            code_breaker.make_initial_guess
-            board.place_code(code_maker.code)
-            puts "Computer is guessing..."
+            if board.current_round == 0
+                code_breaker.make_initial_guess
+            else
+                code_breaker.make_next_guess(board.red_fdbk, board.wht_fdbk)
+            end
+            puts "Computer is thinking...."
             sleep 2
             board.place_guess(code_breaker.guess)
             board.display

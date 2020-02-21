@@ -25,17 +25,25 @@ module Extras
         a correct color code peg placed in the wrong position. \n\n"
     end
 
-    def Extras.display_winner_messsage
-        puts "\n\n\tCongratulations, you guessed the secret code and won the game!\n\n\n"
+    def Extras.play_as_code_maker?
+        prompt_for_input("\tWould you like to play as the Code Maker? Enter (Y/N).")
+    end
+
+    def Extras.display_winner_message
+        puts "\n\n\tCongratulations Code Breaker! You guessed the secret code and won the game!\n\n\n"
     end
 
     def Extras.display_loser_message
-        puts "\n\n\tSorry, you lost the game!\n\n\n"
+        puts "\n\n\tSorry Code Breaker, you lost the game!\n\n\n"
     end
 
     def Extras.replay?
+        prompt_for_input("Would you like to play again? Enter (Y/N).")
+    end
+
+    def prompt_for_input(str)
         input = 0
-        puts "Would you like to play again? Enter Y/N."
+        puts str
         loop do
             input = gets.chomp.upcase
             break if "YN".include?(input)
@@ -43,4 +51,6 @@ module Extras
         end
         input == "Y"
     end
+
+
 end
