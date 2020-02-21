@@ -1,6 +1,6 @@
 class Board
     attr_reader :guesses, :feedbacks, :rounds
-    attr_accessor :code, :current_round, :current_fdbk
+    attr_accessor :code, :current_round
 
     def initialize(rounds=8)
         @guesses = create_empty_guess_array(rounds)
@@ -8,7 +8,6 @@ class Board
         @code = []
         @rounds = rounds
         @current_round = 0
-        @current_feedback = []
     end
 
     public
@@ -35,7 +34,6 @@ class Board
     end
 
     def increment_round
-        puts "round #{current_round}"
         self.current_round += 1
     end
 

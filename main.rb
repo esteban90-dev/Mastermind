@@ -9,7 +9,7 @@ require_relative './lib/extras.rb'
 include Extras
 
 loop do
-    board_1 = Board.new(3)
+    board_1 = Board.new(12)
     code_maker_1 = CodeMakerHuman.new
     code_breaker_1 = CodeBreakerComputer.new
     

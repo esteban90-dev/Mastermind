@@ -54,7 +54,7 @@ class Game
     end
 
     def display_round
-        puts "\nRound #{board.current_round + 1} begins."
+        puts "\n\n\nRound #{board.current_round + 1} begins."
     end
 
     def get_secret_code
@@ -62,7 +62,6 @@ class Game
             code_maker.create_code
         else
             code_maker.code = prompt_for_pegs
-            puts "secret code is #{code_maker.code}"
         end
     end
 
@@ -80,6 +79,7 @@ class Game
 
     def game_loop_computer_guesser
         loop do
+            display_round
             code_breaker.make_initial_guess
             board.place_code(code_maker.code)
             puts "Computer is guessing..."
