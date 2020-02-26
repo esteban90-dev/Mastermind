@@ -1,4 +1,4 @@
-class CodeBreakerHuman
+class CodeBreaker
     attr_accessor :guess
     
     def initialize
@@ -6,7 +6,7 @@ class CodeBreakerHuman
     end
 end
 
-class CodeBreakerComputer < CodeBreakerHuman
+class CodeBreakerComputer < CodeBreaker
 
     public 
 

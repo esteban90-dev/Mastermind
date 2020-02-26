@@ -13,7 +13,7 @@ class Game
 
     def play
         get_secret_code
-        if code_breaker.class == CodeBreakerHuman
+        if code_breaker.class == CodeBreaker
             game_loop_human_guesser
         else
             game_loop_computer_guesser

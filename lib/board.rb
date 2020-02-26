@@ -73,15 +73,18 @@ class Board
     def get_feedback
         guess = get_current_guess
         i = 0
+        j = 0
         result = []
         temp_guess = []
         temp_code = []
+        #find red peg matches
         while i < code.length
             if code[i] == guess[i]
                 result << 'red'
                 red_fdbk[i] = true
-                temp_code << "ignore-1"
-                temp_guess << "ignore-2"
+                #ignore red peg matched items during the search for white pegs
+                temp_code << "ignore-code"
+                temp_guess << "ignore-guess"
             else
                 red_fdbk[i] = false
                 temp_code << code[i]
@@ -90,10 +93,18 @@ class Board
             i += 1
         end
         i = 0
+        #find white peg matches
         while i < temp_code.length
             if temp_code.include?(temp_guess[i])
                 wht_fdbk[i] = true
                 result << 'white'
+                #ignore white peg matched items during next white peg search
+                while j < temp_code.length
+                    if temp_code[j] == temp_guess[i]
+                        temp_code[j] = "ignore-code"
+                    end
+                    j += 1
+                end
             else
                 wht_fdbk[i] = false
             end

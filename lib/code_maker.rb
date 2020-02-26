@@ -1,4 +1,4 @@
-class CodeMakerHuman
+class CodeMaker
     attr_accessor :code
 
     def initialize
@@ -6,7 +6,7 @@ class CodeMakerHuman
     end
 end
 
-class CodeMakerComputer < CodeMakerHuman
+class CodeMakerComputer < CodeMaker
     def initalize
     end
 
