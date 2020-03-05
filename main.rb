@@ -1,10 +1,18 @@
-require 'colorize'
 require_relative './lib/game.rb'
 require_relative './lib/board.rb'
 require_relative './lib/code_maker.rb'
 require_relative './lib/code_breaker.rb'
 require_relative './lib/peg.rb'
 require_relative './lib/extras.rb'
+
+#define gemspec here so repl works properly
+require 'bundler/inline'
+
+gemfile true do
+ source 'http://rubygems.org'
+ gem 'colorize'
+end
+#-------------------------------------------
 
 include Extras
 
